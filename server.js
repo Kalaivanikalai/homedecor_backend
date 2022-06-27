@@ -22,7 +22,7 @@ const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const imageRoutes = require('./routes/imageRoutes');
 
-app.use(cors());
+app.use(cors({ origin: "*",}));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
@@ -67,9 +67,10 @@ app.get('/',(req,res)=>{
   })
   
   
-  server.listen(8000, ()=> {
+  app.listen(process.env.PORT || 8000, () => {
     console.log('server running at port', 8000)
   })
+
   
   app.set('socketio', io);
   
